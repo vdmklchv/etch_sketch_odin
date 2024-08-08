@@ -9,8 +9,6 @@ function createGrid(sideSize) {
         div.className = "grid-element";  
         containerDiv.appendChild(div);
         div.style.width = `${elementSizeDimensions}px`;
-        const color = getRandomColor();
-        div.style.backgroundColor = `rgb(${color.red}, ${color.green}, ${color.blue})`;
     }
 }
 
@@ -22,10 +20,14 @@ function getRandomColor() {
     }
 }
 
+function constructRGBColorString(colorObj) {
+    return `rgb(${colorObj.red}, ${colorObj.green}, ${colorObj.blue})`;
+}
+
 function changeElementColor(e) {
     if (e.target.className !== "container") {
         const color = getRandomColor();
-        e.target.style.backgroundColor = `rgb(${color.red}, ${color.green}, ${color.blue})`;
+        e.target.style.backgroundColor = constructRGBColorString(color);
     }
 }
 
