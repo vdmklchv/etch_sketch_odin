@@ -14,9 +14,9 @@ function createGrid(sideSize) {
 
 function getRandomColor() {
     return {
-        red: Math.floor(Math.random() * 257),
-        green: Math.floor(Math.random() * 257),
-        blue: Math.floor(Math.random() * 257),
+        red: Math.floor(Math.random() * constants.MAX_COLOR_RGB_PLUS_ONE),
+        green: Math.floor(Math.random() * constants.MAX_COLOR_RGB_PLUS_ONE),
+        blue: Math.floor(Math.random() * constants.MAX_COLOR_RGB_PLUS_ONE),
     }
 }
 
@@ -51,9 +51,10 @@ const constants = {
     GAP_SIZE: 1,
     MAX_SIDE_SIZE: 100,
     MIN_SIDE_SIZE: 2,
+    MAX_COLOR_RGB_PLUS_ONE: 257,
 }
 
-containerDiv.addEventListener("mouseout", changeElementColor);
+containerDiv.addEventListener("mouseover", changeElementColor);
 generateButton.addEventListener("click", resetGrid);
 
 
