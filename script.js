@@ -1,14 +1,3 @@
-containerDiv = document.querySelector(".container");
-
-const constants = {
-    CONTAINER_SIDE_DIMENSIONS: 960,
-    GAP_SIZE: 1,
-    MAX_SIDE_SIZE: 100,
-    MIN_SIDE_SIZE: 2,
-}
-
-let elementsPerSide = 16;
-
 function createGrid(sideSize) {
     if (sideSize > constants.MAX_SIDE_SIZE || sideSize < constants.MIN_SIDE_SIZE) return;
 
@@ -33,7 +22,27 @@ function getRandomColor() {
     }
 }
 
+function changeElementColor(e) {
+    if (e.target.className !== "container") {
+        const color = getRandomColor();
+        e.target.style.backgroundColor = `rgb(${color.red}, ${color.green}, ${color.blue})`;
+    }
+}
+
+containerDiv = document.querySelector(".container");
+
+const constants = {
+    CONTAINER_SIDE_DIMENSIONS: 960,
+    GAP_SIZE: 1,
+    MAX_SIDE_SIZE: 100,
+    MIN_SIDE_SIZE: 2,
+}
+
+let elementsPerSide = 16;
+
 createGrid(elementsPerSide);
+
+containerDiv.addEventListener("mouseout", changeElementColor);
 
 
 
