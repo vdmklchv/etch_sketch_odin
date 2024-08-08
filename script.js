@@ -31,7 +31,20 @@ function changeElementColor(e) {
     }
 }
 
+function resetGrid() {
+    let sideSize = 0;
+
+    while (sideSize < 2 || sideSize > 100 || isNaN(sideSize)) {
+        sideSize = Number(prompt("Enter the side size of the canvas (2 -100): "));
+    }
+
+    containerDiv.textContent = "";
+    createGrid(sideSize);
+
+}
+
 containerDiv = document.querySelector(".container");
+generateButton = document.querySelector(".generate-button");
 
 const constants = {
     CONTAINER_SIDE_DIMENSIONS: 960,
@@ -40,11 +53,8 @@ const constants = {
     MIN_SIDE_SIZE: 2,
 }
 
-let elementsPerSide = 16;
-
-createGrid(elementsPerSide);
-
 containerDiv.addEventListener("mouseout", changeElementColor);
+generateButton.addEventListener("click", resetGrid);
 
 
 
