@@ -10,7 +10,6 @@ const constants = {
 let elementsPerSide = 16;
 
 function createGrid(sideSize) {
-    console.log("here");
     if (sideSize > constants.MAX_SIDE_SIZE || sideSize < constants.MIN_SIDE_SIZE) return;
 
     const pixelsPerSideWithoutGaps = constants.CONTAINER_SIDE_DIMENSIONS - constants.GAP_SIZE * sideSize;
