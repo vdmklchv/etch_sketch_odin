@@ -23,9 +23,8 @@ body {
    flex-shrink: 0;
    display: flex;
    flex-wrap: wrap;
-   gap: 1px;
 }
 
 .grid-element {
-    border: 3px black solid;
+    border: 1px black solid;
 }
