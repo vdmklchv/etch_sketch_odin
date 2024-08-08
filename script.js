@@ -6,32 +6,35 @@ function createGrid(sideSize) {
     for (let i = 0; i < sideSize ** 2; i++) {
         const div = document.createElement("div");
         div.className = "grid-element";
-        div.style.setProperty("opacity", constants.INITIAL_OPACITY); 
+        div.setAttribute('opacity', constants.INITIAL_OPACITY);
         containerDiv.appendChild(div);
         div.style.width = `${elementSizeDimensions}px`;
     }
 }
 
-function getRandomColor() {
+function getRandomColor(opacity) {
     return {
         red: Math.floor(Math.random() * constants.MAX_COLOR_RGB_PLUS_ONE),
         green: Math.floor(Math.random() * constants.MAX_COLOR_RGB_PLUS_ONE),
         blue: Math.floor(Math.random() * constants.MAX_COLOR_RGB_PLUS_ONE),
+        opacity: opacity,
     }
 }
 
 function constructRGBColorString(colorObj) {
-    return `rgb(${colorObj.red}, ${colorObj.green}, ${colorObj.blue})`;
+    return `rgb(${colorObj.red}, ${colorObj.green}, ${colorObj.blue}, ${colorObj.opacity})`;
 }
 
 function changeElementColor(e) {
     if (e.target.className !== "container") {
-        const color = getRandomColor();
-        e.target.style.backgroundColor = constructRGBColorString(color);
-        let opacity = Number(e.target.style.opacity);
+        let opacity = Number(e.target.getAttribute("opacity"));
+        console.log(typeof opacity);
         if (opacity < 1) {
-            e.target.style.opacity = opacity + 0.1;
+            opacity += 0.1;
         }
+        const color = getRandomColor(opacity);
+        e.target.style.backgroundColor = constructRGBColorString(color);
+        e.target.setAttribute("opacity", opacity);
     }
 }
 
