@@ -20,6 +20,16 @@ function createGrid(sideSize) {
         div.className = "grid-element";  
         containerDiv.appendChild(div);
         div.style.width = `${elementSizeDimensions}px`;
+        const color = getRandomColor();
+        div.style.backgroundColor = `rgb(${color.red}, ${color.green}, ${color.blue})`;
+    }
+}
+
+function getRandomColor() {
+    return {
+        red: Math.floor(Math.random() * 257),
+        green: Math.floor(Math.random() * 257),
+        blue: Math.floor(Math.random() * 257),
     }
 }
 
